@@ -4063,32 +4063,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   problems:
-  - firstNumber: 34
-    secondNumber: 55
+  - firstNumber: 2
+    secondNumber: 3
     operation: 0
     answers:
-    - 75
-    - 89
-    - 84
-    - 79
+    - 1
+    - 5
+    - 7
+    - 3
     correctTube: 1
-  - firstNumber: 6
-    secondNumber: 13
+  - firstNumber: 3
+    secondNumber: 3
     operation: 2
     answers:
-    - 72
-    - 84
-    - 91
-    - 78
+    - 2
+    - 5
+    - 6
+    - 9
     correctTube: 3
-  - firstNumber: 60
+  - firstNumber: 9
     secondNumber: 3
     operation: 3
     answers:
-    - 20
-    - 30
-    - 15
-    - 25
+    - 3
+    - 2
+    - 4
+    - 6
     correctTube: 0
   curProblem: 0
   timePerProblem: 15
