@@ -1,12 +1,71 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\inside\\Desktop\\Exercices\\S4\\JetPack JoyMath\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E574A43D-265F-762D-D97C-B9D562108105}|Assembly-CSharp.csproj|c:\\users\\inside\\desktop\\exercices\\s4\\jetpack joymath\\assets\\scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E574A43D-265F-762D-D97C-B9D562108105}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E574A43D-265F-762D-D97C-B9D562108105}|Assembly-CSharp.csproj|C:\\Users\\inside\\Desktop\\Exercices\\S4\\JetPack JoyMath\\assets\\scripts\\problem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E574A43D-265F-762D-D97C-B9D562108105}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\problem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E574A43D-265F-762D-D97C-B9D562108105}|Assembly-CSharp.csproj|C:\\Users\\inside\\Desktop\\Exercices\\S4\\JetPack JoyMath\\assets\\scripts\\ui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E574A43D-265F-762D-D97C-B9D562108105}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UI.cs",
+              "DocumentMoniker": "C:\\Users\\inside\\Desktop\\Exercices\\S4\\JetPack JoyMath\\Assets\\Scripts\\UI.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI.cs",
+              "ToolTip": "C:\\Users\\inside\\Desktop\\Exercices\\S4\\JetPack JoyMath\\Assets\\Scripts\\UI.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAcwD8AAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T10:11:34.259Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Problem.cs",
+              "DocumentMoniker": "C:\\Users\\inside\\Desktop\\Exercices\\S4\\JetPack JoyMath\\Assets\\Scripts\\Problem.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Problem.cs",
+              "ToolTip": "C:\\Users\\inside\\Desktop\\Exercices\\S4\\JetPack JoyMath\\Assets\\Scripts\\Problem.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Problem.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T10:07:46.416Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GameManager.cs",
+              "DocumentMoniker": "C:\\Users\\inside\\Desktop\\Exercices\\S4\\JetPack JoyMath\\Assets\\Scripts\\GameManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\GameManager.cs",
+              "ToolTip": "C:\\Users\\inside\\Desktop\\Exercices\\S4\\JetPack JoyMath\\Assets\\Scripts\\GameManager.cs*",
+              "RelativeToolTip": "Assets\\Scripts\\GameManager.cs*",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAAwEEAAABSAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T10:00:59.037Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

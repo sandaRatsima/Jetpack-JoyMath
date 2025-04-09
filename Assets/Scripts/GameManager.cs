@@ -4,83 +4,162 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public Problem[] problems;      // liste de tous les problèmes
-    public int curProblem;          // problème actuel que le joueur doit résoudre
-    public float timePerProblem;    // temps autorisé pour répondre à chaque problème
+    public int totalProblems = 10;       // Total number of problems to generate
+    public float timePerProblem = 100000.0f;   // remettre à 8
+    public float remainingTime;          // Time remaining for current problem
+    public PlayerController player;       // Reference to the player
 
-    public float remainingTime;     // temps restant pour le problème actuel
+    public Problem[] problems;            // Array of all problems (now auto-generated)
+    public int curProblem;                // Current problem index
 
-    public PlayerController player; // objet joueur
-
-    // instance
+    // Instance for singleton pattern
     public static GameManager instance;
 
-    void Awake ()
+    void Awake()
     {
-        // définir l'instance sur ce script.
+        // Set the instance to this script
         instance = this;
     }
 
-    void Start ()
+    void Start()
     {
-        // définir le problème initial
+        // Generate random problems
+        GenerateAllProblems();
+
+        // Set the initial problem
         SetProblem(0);
     }
 
-    void Update ()
+    void Update()
     {
         remainingTime -= Time.deltaTime;
 
-        // le temps restant s'est-il écoulé ?
-        if(remainingTime <= 0.0f)
+        // Has time run out?
+        if (remainingTime <= 0.0f)
         {
             Lose();
         }
     }
 
-    // appelé lorsque le joueur entre dans un tube
-    public void OnPlayerEnterTube (int tube)
+    // Generates all problems at the start of the game
+    void GenerateAllProblems()
     {
-        // est-il entré dans le tube correct ?
+        problems = new Problem[totalProblems];
+        for (int i = 0; i < totalProblems; i++)
+        {
+            problems[i] = GenerateRandomProblem();
+        }
+    }
+
+    // Creates a single random math problem
+    Problem GenerateRandomProblem()
+    {
+        Problem problem = new Problem();
+
+        problem.firstNumber = Random.Range(1, 10);
+        problem.secondNumber = Random.Range(1, 10);
+
+        problem.operation = (MathsOperation)Random.Range(0, 4);
+
+        float correctAnswer = CalculateAnswer(problem.firstNumber, problem.secondNumber, problem.operation);
+
+        problem.answers = GenerateRandomAnswers(correctAnswer, problem.operation);
+        for (int i = 0; i < problem.answers.Length; i++)
+        {
+            if (problem.answers[i] == correctAnswer)
+            {
+                problem.correctTube = i;
+            }
+        }
+        Debug.Log(problem.correctTube);
+
+        return problem;
+    }
+
+    // Calculates the correct answer for a problem
+    float CalculateAnswer(float a, float b, MathsOperation op)
+    {
+        switch (op)
+        {
+            case MathsOperation.Addition: return a + b;
+            case MathsOperation.Subtraction: return a - b;
+            case MathsOperation.Multiplication: return a * b;
+            case MathsOperation.Division: return a / b;
+            default: return 0;
+        }
+    }
+
+    // Generates 4 answers (1 correct, 3 incorrect)
+    float[] GenerateRandomAnswers(float correctAnswer, MathsOperation op)
+    {
+        float[] answers = new float[4];
+        int correctIndex = Random.Range(0, 3);
+
+        // Fill array with wrong answers first
+        for (int i = 0; i < 4; i++)
+        {
+            if (i == correctIndex)
+            {
+                answers[i] = correctAnswer;
+            }
+            else
+            {
+                // Generate plausible wrong answers
+                float offset = Random.Range(1, 4);
+                if (Random.value > 0.5f) offset *= -1;
+
+                // For division, keep answers as multiples
+                if (op == MathsOperation.Division)
+                {
+                    answers[i] = correctAnswer + (int)offset;
+                }
+                else
+                {
+                    answers[i] = correctAnswer + offset;
+                }
+            }
+        }
+
+        return answers;
+    }
+
+    // Called when player enters a tube
+    public void OnPlayerEnterTube(int tube)
+    {
         if (tube == problems[curProblem].correctTube)
             CorrectAnswer();
         else
             IncorrectAnswer();
     }
 
-    // appelé lorsque le joueur entre dans le bon tube
     void CorrectAnswer()
     {
-        // est-ce le dernier problème ?
-        if(problems.Length - 1 == curProblem)
+        // Is this the last problem?
+        if (curProblem == problems.Length - 1)
             Win();
         else
             SetProblem(curProblem + 1);
     }
 
-    // appelé lorsque le joueur entre dans le mauvais tube
-    void IncorrectAnswer ()
+    void IncorrectAnswer()
     {
         player.Stun();
     }
 
-    // définit le problème actuel
-    void SetProblem (int problem)
+    void SetProblem(int problemIndex)
     {
-        curProblem = problem;
+        curProblem = problemIndex;
         UI.instance.SetProblemText(problems[curProblem]);
         remainingTime = timePerProblem;
     }
 
-    // appelé lorsque le joueur répond à tous les problèmes
-    void Win ()
+    void Win()
     {
         Time.timeScale = 0.0f;
         UI.instance.SetEndText(true);
     }
 
-    // appelé si le temps restant pour un problème atteint 0
-    void Lose ()
+    void Lose()
     {
         Time.timeScale = 0.0f;
         UI.instance.SetEndText(false);

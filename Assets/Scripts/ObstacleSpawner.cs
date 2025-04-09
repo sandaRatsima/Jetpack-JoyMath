@@ -36,13 +36,28 @@ public class ObstacleSpawner : MonoBehaviour
     }
 
     // fait apparaître un obstacle aléatoire à un point d'apparition aléatoire
-    void SpawnObstacle ()
+    void SpawnObstacle()
     {
-        // fait apparaître un obstacle aléatoire à un point d'apparition aléatoire
-        GameObject obstacle = Instantiate(obstacles[Random.Range(0, obstacles.Length)], GetSpawnPosition(), Quaternion.identity);
+        GameObject prefab = obstacles[Random.Range(0, obstacles.Length)];
+
+        if (prefab == null)
+        {
+            Debug.LogWarning("Un obstacle du tableau est null !");
+            return;
+        }
+
+        GameObject obstacle = Instantiate(prefab, GetSpawnPosition(), Quaternion.identity);
 
         // définir la direction de déplacement de l'obstacle
-        obstacle.GetComponent<Obstacle>().moveDir = new Vector3(obstacle.transform.position.x > 0 ? -1 : 1, 0, 0);
+        Obstacle obstacleScript = obstacle.GetComponent<Obstacle>();
+        if (obstacleScript != null)
+        {
+            obstacleScript.moveDir = new Vector3(obstacle.transform.position.x > 0 ? -1 : 1, 0, 0);
+        }
+        else
+        {
+            Debug.LogWarning("L'objet instancié n'a pas de script Obstacle !");
+        }
     }
 
     // retourne une position d'apparition aléatoire pour un obstacle
