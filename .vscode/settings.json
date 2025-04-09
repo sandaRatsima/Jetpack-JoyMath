@@ -53,5 +53,5 @@
         "Temp/": true
     },
     "dotnet.preferCSharpExtension": true,
-    "dotnet.defaultSolution": "JetPack JoyMath.sln"
+    "dotnet.defaultSolution": "Jetpack-JoyMath.sln"
 }
