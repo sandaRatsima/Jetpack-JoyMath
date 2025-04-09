@@ -130,17 +130,17 @@ public class PlayerController : MonoBehaviour
     }
 
     // appelé lorsque le joueur entre en collision avec le collider d'un autre objet
-    //void OnTriggerEnter2D (Collider2D col)
-    //{
-    //    // si le joueur n'est pas déjà étourdi, étourdissez-le si l'objet était un obstacle
-    //    if(curState != PlayerState.Stunned)
-    //    {
-    //        if(col.CompareTag("Obstacle"))
-    //        {
-    //            Stun();
-    //        }
-    //    }
-    //}
+    void OnTriggerEnter2D (Collider2D col)
+    {
+        // si le joueur n'est pas déjà étourdi, étourdissez-le si l'objet était un obstacle
+        if(curState != PlayerState.Stunned)
+        {
+          if(col.CompareTag("Obstacle"))
+           {
+               Stun();
+            }
+        }
+    }
 }
 
 public enum PlayerState
